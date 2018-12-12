@@ -1,0 +1,29 @@
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--* Project: WA  WARI GAME FOR PSION 3a       *  Written by: Nick Matthews  *
+--*  Module: WARI FOR PSION SIBOSDK           *  Date Started:  9 Jul 1996  *
+--*    File: WARI.PR         Type: TS PROJECT *  Date Revised:  9 Jul 1996  *
+--* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+-- For use with WARI.MAK file
+
+#system epoc img
+#set epocinit=iplib
+#model small jpi
+
+#abort on
+
+#set version=0x0001
+#set priority=0x80
+#set heapsize=0x80
+
+#compile wari.c
+#compile warimain.c
+#compile waridraw.c
+#compile warimove.c
+
+#pragma link(olib.lib)
+#pragma link(hwim.lib)
+
+#link %main
+
+-- End of WARI.PR File

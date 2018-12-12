@@ -1,0 +1,34 @@
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Project: WA  WARI GAME FOR PSION 3a       *  Written by: Nick Matthews  *
+ *  Module: LIST OF ALL SOURCE AND INF FILES *  Date Started: 16 Jun 1996  *
+ *    File: FILES.TXT       Type: ASCII TEXT *  Date Revised:  2 Oct 1997  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+
+Text files
+
+ FILES.TXT     List of all source and information files, this file.
+
+ WARI.MAK      Project Makefile for use with Borland Make
+ WARI.PR       TopSpeed Project File.
+
+ WARI.CAT      Psion OOP class catagory definitions.
+ WARI.H
+ WARIMAIN.C    Main and class member functions
+ WARIDRAW.C
+ WARIMOVE.H
+ WARIMOVE.C
+ WARI.RE       Psion resource externals file used to create wari.rg
+ WARI.RSS      Psion resource file, English version
+ WARIHELP.RHT  Resource Help Text used to create warihelp.rhi
+
+Binary files
+
+ WARI24.PCX    24*24 bit Wari Icon
+ WARI48.PCX    48*48 bit Wari Icon
+
+Release files
+
+ README.TXT    Program introduction and installation details
+
+End of WARI.TXT file

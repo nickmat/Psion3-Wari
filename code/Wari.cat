@@ -1,0 +1,191 @@
+!* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+!* Project: WA  WARI GAME FOR PSION 3a       *  Written by: Nick Matthews  *
+!*  Module: PSION OOP CLASS CATAGORY FILE    *  Date Started: 16 Jun 1996  *
+!*    File: WARI.CAT        Type: PSION CAT  *  Date Revised: 16 Jun 1996  *
+!* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+IMAGE wari
+
+EXTERNAL olib
+EXTERNAL hwim
+
+INCLUDE hwimman.g
+INCLUDE timer.g
+
+!***************************************************************************
+!*  wariws  Window server active object.
+!*  ~~~~~~
+
+CLASS   wariws   wserv
+{
+    REPLACE ws_dyn_init
+}
+
+!***************************************************************************
+!*  waribw  Playing Board Window.
+!*  ~~~~~~
+
+CLASS   waribw   bwin
+{
+    REPLACE wn_init
+    REPLACE wn_draw
+    REPLACE wn_key
+    ADD wn_set_hilight      ! Remove any existing hilight and add new one
+    ADD wn_set_score        ! Write the score to the screen
+    ADD wn_update_cup       ! Add or Remove stones from cup
+    PROPERTY
+    {
+        int HiLighted;      ! Currently highlighted cup
+    }
+}
+
+!***************************************************************************
+!*  statbw  Status Window.
+!*  ~~~~~~
+
+CLASS   statbw   bwin
+{
+    REPLACE wn_init
+    REPLACE wn_set
+    REPLACE wn_draw
+    ADD sw_set_level
+    PROPERTY
+    {
+        UINT idstate;        ! Current game state string id
+        UINT idlevel;        ! Level string id
+    }
+}
+
+!***************************************************************************
+!*  waricm  Command manager.
+!*  ~~~~~~
+
+CLASS waricm comman
+{
+    ADD com_new
+    ADD com_undo
+    ADD com_hint
+    ADD com_grey
+    ADD com_white   = waricm_com_grey
+    ADD com_2player = waricm_com_grey
+    ADD com_beginner
+    ADD com_novice
+    ADD com_expert
+    ADD com_master
+    ADD com_sound
+    ADD com_speed
+    ADD com_about
+    CONSTANTS
+    {
+        LEVEL_BEGINNER 2
+        LEVEL_NOVICE   4
+        LEVEL_EXPERT   7
+        LEVEL_MASTER   10
+    }
+}
+
+!***************************************************************************
+!*  move  Move the stones, one step at a time
+!*  ~~~~
+
+CLASS move timer
+{
+    REPLACE ao_init
+    REPLACE ao_run
+    ADD mv_start
+    CONSTANTS
+    {
+        MOVE_DONE  0
+        DISTRIBUTE 1
+        CAPTURE    2
+        ENDGAME    3
+    }
+    PROPERTY
+    {
+        int mode;
+        int cup;
+        int side;
+        int capture;
+        int count;
+    }
+}
+
+!***************************************************************************
+!*  game  The wari engine. Pointed to by the global constant Game.
+!*  ~~~~
+
+CLASS game root
+{
+    ADD wg_init
+    ADD wg_reset            ! Start new game
+    ADD wg_set_level
+    ADD wg_play_cup         ! Play the player cup
+    ADD wg_play_next        ! Set up for the next move
+    ADD wg_end_game         ! Put up Winners dialog
+    CONSTANTS
+    {
+        GREY_SIDE        0
+        WHITE_SIDE       1
+        COMPUTER_PLAYER  0
+        HUMAN_PLAYER     1
+    }
+    PROPERTY
+    {
+        ! NOTE: Most of these are considered pubic, in the interests of
+        !       efficiency.
+        PR_MOVE* move;      ! Control the current move
+        PR_STATBW* swin;    ! Status window object
+        int Stones[14];     ! Current board position
+        int LastMove[14];   ! Previous board position for Undo option
+        int LastTurn;       ! Previous TurnToPlay for Undo option
+        int LastMoves;
+        int InProgress;     ! A move is in progress
+        int Level;          ! Difficulty level, number of moves ahead
+        int GreyIs;         ! Grey (PLAYER1) is Player or Computer
+        int WhiteIs;        ! White (PLAYER2) is Player or Computer
+        int TurnToPlay;     ! Grey or White to play next
+        int SoundOn;        ! Clicks on each stone placement
+        int Delay;          ! Interval between stone placements
+        int UndoOk;         ! TRUE If Undo is available
+        int Moves;          ! Number of moves made in the game
+        int PlayMode;       ! Current game type as O_COM_????
+    }
+}
+
+!***************************************************************************
+!*  enddlg  Winner dialog box.
+!*  ~~~~~~
+
+CLASS enddlg dlgbox
+{
+    REPLACE dl_dyn_init
+    TYPES
+    {
+        typedef struct
+        {
+            TEXT* winner;
+        } END_RESULT;
+    }
+}
+
+!***************************************************************************
+!*  sounddlg  Set sound on/off dialog box.
+!*  ~~~~~~~~
+
+CLASS sounddlg dlgbox
+{
+    REPLACE dl_dyn_init
+    REPLACE dl_key
+}
+
+!***************************************************************************
+!*  speeddlg  Set playing speed dialog box.
+!*  ~~~~~~~~
+
+CLASS speeddlg dlgbox
+{
+    REPLACE dl_dyn_init
+    REPLACE dl_key
+}
+
+! End of WARI.CAT

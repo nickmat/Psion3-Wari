@@ -1,0 +1,200 @@
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Project: WA  WARI GAME FOR PSION 3a       *  Written by: Nick Matthews  *
+ *  Module: WARI HELP TEXT RESOURCE          *  Date Started: 24 Aug 1996  *
+ *    File: WARI.RHT        Type: PSION HELP *  Date Revised:  2 Oct 1997  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+ Compile into WARI.RHI with PHCOMP
+
+#Page  wari_help            Wari
+
+#Topic help_playing_wari
+#Topic help_wari_rules
+#Topic help_making_moves
+#Topic help_game
+#Topic help_skill
+#Topic help_special
+#Topic help_license
+#Topic help_about_kizzyco
+
+
+#Page  help_playing_wari    Playing Wari
+
+Wari is a game for two players. Either two players can play
+the game, using the computer to make the moves and keep
+score, or one player can play against the computer.
+
+Select the mode from the Game menu. The Play Grey and Play
+White options are both played against the Psion. Selecting
+one of these options will decide who plays first, as Grey
+always has the first move. If you elect to play White, then
+the Psion makes a random first move. The 2 Player option
+allows two human participants to play, although the Hint
+option can still be used. Changing the playing mode will
+always start a new game.
+
+Once a game has started, simply use the keyboard to select
+the cup to move next. See Making Moves. The Psion will not
+let you make an illegal move.
+
+The Psion will detect when a player cannot  move and
+completes the game by moving the remaining stones to the
+winner's prisoner cup.
+
+
+#Page  help_wari_rules   Wari Rules
+
+Wari is a game for two players, White and Grey. It is played
+on a board consisting of 14 cups and 48 stones. Two players
+each have six playing cups, plus one larger one for
+collecting prisoners (captured stones). At the start of the
+game each of the cups holds four stones. The Grey player
+always goes first.
+
+A move is made by taking the stones out of one of the
+players own cups and distributing them one at a time to the
+other cups, going round the board in an anti-clockwise
+direction. Stones are captured if the last stone placed
+lands in an opponents cup with only one or two stones. These
+stones (plus the players own) are then removed to the
+players prisoners cup. If the previous cup is also the
+opponents cup containing 2 or 3 stones (1 or 2 before the
+move) then these are also captured, this is repeated as many
+times as necessary.
+
+The players make alternate moves until one player runs out
+of cups with stones in. The other player then empties the
+remaining stones into their own prisoners cup. The winner is
+the one who has captured the most prisoners.
+
+
+#Page  help_making_moves  Making Moves
+
+Use the left and right cursor keys to highlight the cup you
+wish to move, or use the Hint menu option. Pressing the
+Enter key will then make the move.
+
+Alternatively, pressing one of the number keys from 1 to 6
+will play the cup straight away.  Both White and Grey cups
+are numbered from left to right.
+
+
+#Page  help_game      Wari Game Menu
+
+New
+Start a new game. If a game is in progress then it is cancelled.
+
+Undo
+Take back your last move. You can only undo one move.
+
+Hint
+The Psion will highlight its choice of move. The selected move is
+affected by the currently selected skill level.
+
+Play Grey
+You play Grey, the Psion will play White. You play the first move.
+Selecting  this option will also start a new game.
+
+Play White
+You play White, the Psion will play Grey. The Psion will play the
+first move by selecting a cup at random. Selecting  this option will
+also start a new game.
+
+2 Player
+You (or you and another player) play both White and Grey. The Psion
+plays no part at all, except that the Hint option may still be used.
+
+#Page  help_skill      Wari Skill Menu
+
+Beginner  The Psion looks 2 moves ahead.
+
+Novice   The Psion looks 4 moves ahead.
+
+Expert   The Psion looks 7 moves ahead.
+
+Master   The Psion looks 10 moves ahead.
+
+Remember that the length of time required
+to work out the best move goes up rapidly
+as the number of moves ahead increases.
+
+#Page  help_special      Wari Special Menu
+
+Clicks
+Switch the clicks made as the stones are moved ON or OFF.
+The default is ON.
+
+Speed
+Set the speed at which the stones are moved around the board.
+The movement is slowed down to make it easier to follow what
+is going on. Use the dialog to set the speed from 10 (slowest)
+to 1 (fastest). The default is 4.
+Note, this will not affect the \"Thinking\" time, that is fixed
+by the Skill level.
+
+About Wari
+Display the version and copyright details.
+
+Exit
+Terminate the program.
+
+
+#Page  help_license   Wari License
+
+Licence.
+This program is Freeware. There is no charge for the use of this
+program. It may be copied, uploaded to and downloaded from public
+bulletin boards providing:-
+
+1) No fee is charged for use, copying or distribution other than
+   reasonable media or connect costs.
+2) All files listed below are included and are not modified in
+   any way.
+
+  WARI.APP    The Psion 3a program file.
+  README.TXT  This file.
+
+Distribution by other means is also permitted but will require
+my permission.
+
+Nick Matthews, KizzyCo.
+Kizzy Cottage, 74 High Street,
+Ardingly, West Sussex RH17 6TD
+England
+
+Tel: +44 (0)1444 892560      Email: nick@kizzyco.com
+
+Disclaimer
+This program is provided "as is" without any warranty, expressed
+or implied, including but not limited to fitness for a particular
+purpose. Under no circumstances will the author (Nick Matthews) be
+held responsible for loss of data, damage to software/hardware, or
+any other type of loss or damage as a direct or indirect result of
+using this software.
+
+
+#Page  help_about_kizzyco  About KizzyCo
+
+KizzyCo is involved in software
+development for Desktop and
+Handheld Personal Computers.
+
+KizzyCo is also responsible for
+Vector, the CAD package designed
+to run on the Psion 3a/3c.
+
+ KizzyCo
+ Kizzy Cottage
+ 74 High Street
+ Ardingly
+ West Sussex   RH17 6TD
+ England
+
+ Tel: +44 (0)1444 892560
+ Email: nick@kizzyco.com
+ Web: http://www.kizzyco.com/
+
+ Nick Matthews,
+ Sole Proprietor, KizzyCo.
+
+#End

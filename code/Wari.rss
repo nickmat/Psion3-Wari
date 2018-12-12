@@ -1,0 +1,349 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Project: WA  WARI GAME FOR PSION 3a       *  Written by: Nick Matthews  *
+ *  Module: PSION RESOURCE FILE - ENGLISH    *  Date Started: 16 Jun 1996  *
+ *    File: WARI.RSS        Type: PSION RSS  *  Date Revised: 16 Jun 1996  *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+*/
+
+#include <hwim.rh>
+#include <hwim.rg>
+#include <wari.rg>
+#include <sa_.rsg>
+
+RESOURCE WSERV_INFO wari_accs
+{
+    menbar_id = wari_menbar;
+    first_com = O_COM_EXIT;
+    accel =
+    {
+        'x',    /* Exit */
+        'n',    /* New */
+        'u',    /* Undo */
+        'h',    /* Hint */
+        'g',    /* Play Grey */
+        'w',    /* Play White */
+        'p',    /* 2 Player */
+        'b',    /* Beginner */
+        'v',    /* Novice */
+        'e',    /* Expert */
+        'm',    /* Master */
+        'c',    /* Clicks */
+        's',    /* Speed */
+        'a'     /* About */
+    };
+}
+
+RESOURCE MENU_BAR wari_menbar
+{
+    items =
+    {
+        MENU_BAR_ITEM
+        {
+            menu_id = game_menu;
+            mb_item = "Game";
+        },
+        MENU_BAR_ITEM
+        {
+            menu_id = skill_menu;
+            mb_item = "Skill";
+        },
+        MENU_BAR_ITEM
+        {
+            menu_id=special_menu;
+            mb_item="Special";
+        }
+    };
+}
+
+RESOURCE MENU game_menu
+{
+    items =
+    {
+        MENU_ITEM
+        {
+            com_id = O_COM_NEW;
+            mn_item = "New";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_UNDO;
+            mn_item = "Undo";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_HINT | BREAK_LINE_FOLLOWS;
+            mn_item = "Hint";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_GREY;
+            mn_item = "Play Grey";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_WHITE;
+            mn_item = "Play White";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_2PLAYER;
+            mn_item = "2 Player";
+        }
+    };
+}
+
+RESOURCE MENU skill_menu
+{
+    items =
+    {
+        MENU_ITEM
+        {
+            com_id = O_COM_BEGINNER;
+            mn_item = "Beginner";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_NOVICE;
+            mn_item = "Novice";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_EXPERT;
+            mn_item = "Expert";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_MASTER;
+            mn_item = "Master";
+        }
+    };
+}
+
+RESOURCE MENU special_menu
+{
+    items =
+    {
+        MENU_ITEM
+        {
+            com_id = O_COM_SOUND;
+            mn_item = "Clicks...";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_SPEED | BREAK_LINE_FOLLOWS;
+            mn_item = "Speed...";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_ABOUT | BREAK_LINE_FOLLOWS;
+            mn_item = "About Wari";
+        },
+        MENU_ITEM
+        {
+            com_id = O_COM_EXIT;
+            mn_item = "Exit";
+        }
+    };
+}
+
+RESOURCE DIALOG endgame_dialog
+{
+    title = "End of Game";
+    controls =
+    {
+        CONTROL /* Line 1 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_CENTRE | DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_CENTRE | IN_TEXTWIN_BOLD;
+            };
+        },
+        CONTROL /* Buttons */
+        {
+            class = C_ACLIST;
+            info = ACLIST
+            {
+                rid = endgame_ac;
+            };
+        }
+    };
+}
+
+RESOURCE ACLIST_ARRAY endgame_ac
+{
+    button =
+    {
+        PUSH_BUT
+        {
+            keycode = W_KEY_RETURN;
+            str = "Play Again";
+        },
+        PUSH_BUT
+        {
+            keycode = ' ';
+            str = "Stop";
+        }
+    };
+}
+
+RESOURCE STRING mess_you_win      { str = "You Win!"; }
+RESOURCE STRING mess_i_win        { str = "I Win!"; }
+RESOURCE STRING mess_grey_win     { str = "Grey Wins!"; }
+RESOURCE STRING mess_white_win    { str = "White Wins!"; }
+RESOURCE STRING mess_a_draw       { str = "A Draw!"; }
+
+RESOURCE DIALOG about_dialog
+{
+    title = "About Wari";  /* Line 0 */
+    controls =
+    {
+        CONTROL /* Line 1 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_CENTRE | DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_CENTRE;
+                str = "Wari for Psion 3a.  Version P1.00";
+            };
+        },
+        CONTROL /* Line 2 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_CENTRE | DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_CENTRE;
+                str = "Copyright (c) 1997 Nick Matthews";
+            };
+        },
+        CONTROL /* Line 3 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_LEFT | IN_TEXTWIN_BOLD;
+                str = "KizzyCo";
+            };
+        },
+        CONTROL /* Line 4 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_LEFT;
+                str = "Kizzy Cottage, 74 High Street,";
+            };
+        },
+        CONTROL /* Line 5 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_LEFT;
+                str = "Ardingly, West Sussex. RH17 6TD";
+            };
+        },
+        CONTROL /* Line 6 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_LEFT;
+                str = "England";
+            };
+        },
+        CONTROL /* Line 7 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_CENTRE | DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_LEFT;
+                str = "Email: nick@kizzyco.com";
+            };
+        },
+        CONTROL /* Line 8 */
+        {
+            class = C_TEXTWIN;
+            flags = DLGBOX_ITEM_CENTRE | DLGBOX_ITEM_DEAD;
+            info = TXTMESS
+            {
+                flags = IN_TEXTWIN_AL_LEFT;
+                str = "Web: http://www.kizzyco.com/";
+            };
+        }
+    };
+}
+
+RESOURCE DIALOG sound_dialog
+{
+    title = "Set Sound";
+    flags = DLGBOX_NOTIFY_ENTER;
+    controls =
+    {
+        CONTROL
+        {
+            class = C_CHLIST;
+            prompt = "Clicks";
+            info = CHLIST
+            {
+                rid = -SYS_OFFON_MENU;
+            };
+        }
+    };
+}
+
+RESOURCE STRING set_sound_option  { str = "Set Sound (Clicks) On"; }
+
+RESOURCE DIALOG speed_dialog
+{
+    title = "Set Move Speed";
+    flags = DLGBOX_NOTIFY_ENTER;
+    controls =
+    {
+        CONTROL
+        {
+            class = C_NCEDIT;
+            prompt = "Fast 0, Slow 10";
+            info = NCEDIT
+            {
+                low = 0;
+                high = 10;
+                current = 4;
+            };
+        }
+    };
+}
+
+RESOURCE STRING no_stones_to_play   { str="No stones to play"; }
+RESOURCE STRING str_chk_no_undo     { str="Undo not available"; }
+RESOURCE STRING str_chk_in_progress { str="Wait for move to finish"; }
+RESOURCE STRING str_chk_end_game    { str="Game is over"; }
+RESOURCE STRING confirm_quit_game   { str="Quit Current Game?"; }
+
+RESOURCE STRING stat_grey_to_play   { str="Grey to Play..."; }
+RESOURCE STRING stat_greys_move     { str="Greys Move"; }
+RESOURCE STRING stat_white_to_play  { str="White to Play..."; }
+RESOURCE STRING stat_whites_move    { str="Whites Move"; }
+RESOURCE STRING stat_thinking       { str="Thinking"; }
+RESOURCE STRING stat_thinking_hint  { str="Thinking about Hint"; }
+RESOURCE STRING stat_game_over      { str="Game Over"; }
+
+RESOURCE STRING beginner_str        { str="Beginner Level"; }
+RESOURCE STRING novice_str          { str="Novice Level"; }
+RESOURCE STRING expert_str          { str="Expert Level"; }
+RESOURCE STRING master_str          { str="Master Level"; }
+
+RESOURCE STRING move_str            { str="Move %d"; }
+
+#include "warihelp.rhi"
+
+/* End of WARI.RSS File */
